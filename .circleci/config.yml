@@ -9,22 +9,16 @@ jobs:
       - image: circleci/golang:1.9
     working_directory: /go/src/github.com/{{ORG_NAME}}/{{REPO_NAME}}
     steps:
-      - checkout
-
-      # specify any bash command here prefixed with `run: `
-      - run: go get -v -t -d ./...
-      - run: go test -v ./...
+      - run: echo 1
+      - run: echo 2
   build2:
     docker:
       # specify the version
       - image: circleci/golang:1.9
     working_directory: /go/src/github.com/{{ORG_NAME}}/{{REPO_NAME}}
     steps:
-      - checkout
-
-      # specify any bash command here prefixed with `run: `
-      - run: go get -v -t -d ./...
-      - run: go test -v ./...
+      - run: echo 1
+      - run: echo 2
   build3:
     docker:
       # specify the version
@@ -38,7 +32,8 @@ jobs:
       - image: circleci/golang:1.9
     working_directory: /go/src/github.com/{{ORG_NAME}}/{{REPO_NAME}}
     steps:
-      - checkout
+      - run: echo 1
+      - run: echo 2
       
 workflows:
   version: 2
