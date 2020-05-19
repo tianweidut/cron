@@ -26,6 +26,14 @@ jobs:
     working_directory: /go/src/github.com/{{ORG_NAME}}/{{REPO_NAME}}
     steps:
       - checkout
+  build3:
+    docker:
+      # specify the version
+      - image: circleci/golang:1.9
+    working_directory: /go/src/github.com/{{ORG_NAME}}/{{REPO_NAME}}
+    steps:
+      - run: echo 1
+      - run: echo 2
   build5:
     docker:
       # specify the version
@@ -50,3 +58,23 @@ workflows:
           requires:
             - build2
             - build3
+      - build5:
+          requires:
+            - build1
+            - build2
+            - build3
+            - build4
+  build-deploy2:
+    jobs:
+      - build1
+      - build2:
+          requires:
+            - build1
+      - build3:
+          requires:
+            - build1
+      - build4
+      - build5:
+          requires:
+            - build1
+            - build4
