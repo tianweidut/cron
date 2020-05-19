@@ -26,7 +26,7 @@ jobs:
     working_directory: /go/src/github.com/{{ORG_NAME}}/{{REPO_NAME}}
     steps:
       - checkout
-  build3:
+  build4:
     docker:
       # specify the version
       - image: circleci/golang:1.9
